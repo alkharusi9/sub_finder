@@ -20,7 +20,7 @@ class bcolors:
 def scanner():
     filename = input(bcolors.WARNING+'Enter the filename:'+bcolors.ENDC)
     file = open(filename,'r')
-    output = open('output.vcs','w')
+    output = open('subdomains.vcs','w')
     domain = input(bcolors.WARNING+'Enter the domain name:'+bcolors.ENDC)
     print(bcolors.FAIL+'[*] Scanning for subdomains'+bcolors.ENDC)
     time.sleep(3)
