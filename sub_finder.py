@@ -4,6 +4,7 @@
 
 import requests
 import time
+import sys
 
 
 class bcolors:
@@ -18,10 +19,10 @@ class bcolors:
 
 
 def scanner():
-    filename = input(bcolors.WARNING+'Enter the filename:'+bcolors.ENDC)
+    domain = sys.argv[1]
     file = open(filename,'r')
     output = open('subdomains.vcs','w')
-    domain = input(bcolors.WARNING+'Enter the domain name:'+bcolors.ENDC)
+    filename = sys.argv[2]
     print(bcolors.FAIL+'[*] Scanning for subdomains'+bcolors.ENDC)
     time.sleep(3)
     print(bcolors.FAIL+'[*] This might take few minutes...'+bcolors.ENDC)
