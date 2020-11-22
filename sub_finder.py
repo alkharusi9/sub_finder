@@ -34,7 +34,7 @@ def scanner():
             try:
                 requests.get(url)
             except requests.ConnectionError:
-                pass
+                print(bcolor.FAIL+url+bcolors.ENDC)
             else:
                 print(bcolors.OKGREEN+'[+]' + url+bcolors.ENDC)
                 output.write('[+]'+url+'\n')
