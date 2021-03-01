@@ -30,11 +30,15 @@ def scanner():
     for subdomain in file.readlines():
 
             directory = subdomain.strip('\n')
-            url = 'http://'+directory+'.'+domain  #You may change this to "https://" if the website uses 'SSL/TLS'
+            url = 'http://'+directory+'.'+domain # You may change 'http://' to 'https://' if the website use 'SSL/TLS'
             try:
                 requests.get(url)
             except requests.ConnectionError:
                 print(bcolors.FAIL+'[-]'+url+bcolors.ENDC)
+            
+            except KeyboardInterrupt:
+            	print('CTRL+C was clicked to stop the scan!')
+            	exit(1)
             else:
                 print(bcolors.OKGREEN+'[+]' + url+bcolors.ENDC)
                 output.write('[+]'+url+'\n')
