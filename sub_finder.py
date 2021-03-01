@@ -20,9 +20,9 @@ class bcolors:
 
 def scanner():
     domain = sys.argv[1]
+    filename = sys.argv[2]
     file = open(filename,'r')
     output = open('subdomains.vcs','w')
-    filename = sys.argv[2]
     print(bcolors.FAIL+'[*] Scanning for subdomains'+bcolors.ENDC)
     time.sleep(3)
     print(bcolors.FAIL+'[*] This might take few minutes...'+bcolors.ENDC)
@@ -30,11 +30,11 @@ def scanner():
     for subdomain in file.readlines():
 
             directory = subdomain.strip('\n')
-            url = 'https://'+directory+'.'+domain
+            url = 'http://'+directory+'.'+domain  #You may change this to "https://" if the website uses 'SSL/TLS'
             try:
                 requests.get(url)
             except requests.ConnectionError:
-                print(bcolor.FAIL+url+bcolors.ENDC)
+                print(bcolors.FAIL+'[-]'+url+bcolors.ENDC)
             else:
                 print(bcolors.OKGREEN+'[+]' + url+bcolors.ENDC)
                 output.write('[+]'+url+'\n')
@@ -42,4 +42,3 @@ def scanner():
 
 if __name__=='__main__':
     scanner()
-
